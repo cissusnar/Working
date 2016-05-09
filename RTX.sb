@@ -24,7 +24,6 @@
          (regex #"^/private/var/folders/*")
          (regex #"^/Users/[^.]+Library/Caches/com.tencent.MacRTX")
          (regex #"^/Users/[^.]+/Library/Application Support/com.tencent.RTX/*")
-         (regex #"^/Users/[^.]+/Documents/*")
          (regex #"^/Users/[^.]+/RTXFiles/*")
          (regex #"^/Users/[^.]+Library/Caches/com.apple.quicklook.satellite")
         )
@@ -37,7 +36,6 @@
          (subpath "/Library/Input Methods")
          (subpath "/Library/PDF Services")
          (subpath "/Library/QuickLook"))
-
 
         (allow file-read*
          (subpath "/System")
@@ -70,7 +68,6 @@
         (regex #"^/Users/[^.]+Library/Preferences/ByHost/.GlobalPreferences.8884FF5A-84F9-5F63-9F2F-8127347422E4.plist")
         (regex #"^/Users/[^.]+Library/Preferences/com.apple.HIToolbox.plist")
         (regex #"^/Users/[^.]+Library/Preferences/com.tencent.MacRTX.plist")
-        (regex #"^/Users/[^.]+/Documents/*")
         (regex #"^/Users/[^.]+Library/Preferences/com.tencent.RTX.plist")
         (subpath "/Library/Application Support/CrashReporter/SubmitDiagInfo.domains")
         (subpath "/Library/Application Support/iLifeMediaBrowser/Plug-Ins")
@@ -127,8 +124,6 @@
          (regex #"^/Users/[^.]+/Library/Preferences/com.tencent.MacRTX.plist")
          ; To allow downloads
          (regex #"^/Users/[^.]+/RTXFiles/*")
-         (regex #"^/Users/[^.]+/Documents/*")
-         (regex #"^/Users/[^.]+/Pictures/*")
          ;         (literal "/dev/dtracehelper")
         )
 
@@ -147,8 +142,6 @@
          (literal "/Users")
          (regex #"^/Users/[^.]+")
          (regex #"^/Users/[^.]+/RTXFiles/*")
-         (regex #"^/Users/[^.]+/Documents/*")
-         (regex #"^/Users/[^.]+/Pictures/*")
          (regex #"^/Users/[^.]+/Library")
          (literal "/etc")
          (literal "/private")
