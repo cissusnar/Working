@@ -10,7 +10,7 @@ then
     exit 0
 fi
 
-CONFIG_FILE=~/.read_config
+CONFIG_FILE=~/.config_read
 
 FILE_NAME=$1
 
@@ -19,9 +19,9 @@ MD5_FILE_NAME=$(echo -n $FILE_NAME | md5)
 read_config()
 {
     READ_CONFIG=""
-    if [[ -f $CONFIG_FILE ]]
+    if [[ -f "$CONFIG_FILE" ]]
     then
-        READ_CONFIG=$(cat ~/.read_config)
+        READ_CONFIG=$(cat "$CONFIG_FILE")
     else
         READ_CONFIG="{}"
     fi
@@ -48,13 +48,14 @@ write_line()
     LINE_NUMBER=$2
     #echo $(echo $(read_config) | jq ".${KEY} = ${LINE_NUMBER}") > $CONFIG_FILE
     NEW_CONFIG=$(echo $(read_config) | jq ".\"${KEY}\" = ${LINE_NUMBER}")
-    echo $NEW_CONFIG > $CONFIG_FILE
+    echo $NEW_CONFIG > "$CONFIG_FILE"
 }
 
 LINE=$(read_line ${MD5_FILE_NAME})
 IFS=$'\n'
 trap "exit" INT
-for line in $(sed "${LINE},\$!d" $FILE_NAME)
+MAX_LINE=$((LINE+500))
+for line in $(sed "${LINE},${MAX_LINE}!d" $FILE_NAME)
 do
     echo $LINE : $line
     echo $line | say
